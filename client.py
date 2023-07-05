@@ -36,10 +36,9 @@ def Main():
 
         # ask the client whether he wants to continue
         ans = input('\nDo you want to continue?(y/n) :')
-        if ans == 'y':
-            pass
-        else:
+        if ans != 'y':
             break
+    
         query = input('\nGive us an image link: ')
         try:
             # This statement requests the resource at
@@ -50,11 +49,12 @@ def Main():
             # Opening a new file named img with extension .jpg
             # This file would store the data of the image file
             filename = input("\nName the file: ")
-            f = open(filename + '.jpg', 'wb')
+            
 
             # Storing the image data inside the data variable to the file
-            f.write(data)
-            f.close()
+            with  open(filename + '.jpg', 'wb') as f:
+                f.write(data)
+            
 
             # Opening the saved image and displaying it
             img = Image.open(filename + '.jpg')
